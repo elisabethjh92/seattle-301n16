@@ -8,17 +8,17 @@ const rightImage = document.getElementById('right');
 
 let allProducts = [];
 const container = document.getElementById('image_container');
-let viewed = [];
-let labels = [];
+const viewed = [];
+const labels = [];
 const pics = [leftImage, centerImage, rightImage];
 const list = document.getElementById('productlist');
 let totalClicks = 0;
-let views = [];
-let votes = [];
+const views = [];
+const votes = [];
 
 function Product(name) {
   this.name = name;
-  this.path = `../img/${name}.jpg`;
+  this.path = `img/${name}.jpg`;
   this.votes = 0;
   this.views = 0;
   allProducts.push(this);
@@ -30,25 +30,27 @@ function makeRandom() {
 
 function displayPics(){
   while(viewed.length < 6){
-    const rando = makeRandom();
+    var rando = makeRandom();
     while(!viewed.includes(rando)){
       viewed.push(rando);
+      console.log('Hi');
     }
   }
-}
 
-// TODO: In a sentence or two, explain why the previous line of code threw an error when we changed the letiable declaration from `let to `let`.
-// The previous line of code threw an error when I changed var to let because rando is a local variable and the console log was outside of the function and was trying to log something local in a global way.
-console.log(viewed);
-displayPics();
 
-for (let i = 0; i < 3; i++){
-  let temp = viewed.shift();
-  console.log(allProducts[temp]);
-  console.log(temp);
-  pics[i].src = allProducts[temp].path;
-  pics[i].id = allProducts[temp].name;
-  allProducts[temp].views += 1;
+  // TODO: In a sentence or two, explain why the previous line of code threw an error when we changed the letiable declaration from `let to `let`.
+  // The previous line of code threw an error when I changed var to let because rando is a local variable and the console log was outside of the function and was trying to log something local in a global way.
+  console.log(viewed);
+
+  for (let i = 0; i < 3; i++){
+    console.log(viewed);
+    var temp = viewed.shift();
+    console.log(allProducts[temp]);
+    console.log(temp);
+    pics[i].src = allProducts[temp].path;
+    pics[i].id = allProducts[temp].name;
+    allProducts[temp].views += 1;
+  }
 }
 
 function handleClick(event) {
@@ -136,3 +138,4 @@ if(localStorage.busmall){
   }
 }
 
+displayPics();
