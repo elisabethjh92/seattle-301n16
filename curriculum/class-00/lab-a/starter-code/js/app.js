@@ -18,7 +18,7 @@ let votes = [];
 
 function Product(name) {
   this.name = name;
-  this.path = `img/${name}.jpg`;
+  this.path = `../img/${name}.jpg`;
   this.votes = 0;
   this.views = 0;
   allProducts.push(this);
@@ -40,9 +40,12 @@ function displayPics(){
 // TODO: In a sentence or two, explain why the previous line of code threw an error when we changed the letiable declaration from `let to `let`.
 // The previous line of code threw an error when I changed var to let because rando is a local variable and the console log was outside of the function and was trying to log something local in a global way.
 console.log(viewed);
+displayPics();
 
 for (let i = 0; i < 3; i++){
-  const temp = viewed.shift();
+  let temp = viewed.shift();
+  console.log(allProducts[temp]);
+  console.log(temp);
   pics[i].src = allProducts[temp].path;
   pics[i].id = allProducts[temp].name;
   allProducts[temp].views += 1;
@@ -133,4 +136,3 @@ if(localStorage.busmall){
   }
 }
 
-displayPics();
