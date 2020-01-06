@@ -17,6 +17,10 @@ nav li {
   padding-right: 2px;
 }
 
+.print img {
+  margin-right: 3px;
+}
+
 main p {
   color: #333;
   font-size: 1.2em;
@@ -59,10 +63,6 @@ aside button {
   color: #fff;
   font-size: 1.2em;
   border: none;
-}
-
-.print img {
-  margin-right: 3px;
 }
   
 section hr {
