@@ -27,7 +27,8 @@ const defaults = require('./middleware.js');
 
 // The handlers for the routes that this API will actually use
 const routes = require('./routes.js');
-
+const methodOverride = require('method-override');
+app.use(methodOverride('_method'));
 
 // Anything static (css or browser-side javascript) should go here
 app.use(express.static('./www'));
@@ -40,6 +41,9 @@ app.set('views', './server/views');
 // Route Handler Definitions. Each express method and route should call
 // a method that the routes.js file exported
 app.get('/', routes.homePageHandler);
+app.get('/');
+app.get('/characters', character);
+app.put('/characters:name', updateChar);
 
 // Wire in the defaults we required above.
 app.use('*', defaults.notFoundHandler);
@@ -52,6 +56,19 @@ function startServer() {
     .then(() => app.listen(port))
     .then(() => console.log(`Server Listening on ${port}`))
     .catch(err => console.error(err));
+}
+
+function character(req, res) {
+  counter++;
+  fetchCharactersFromSWAPI(counter)
+    .then(data => {
+      res.status(200).send(data.results);
+    })
+    .catch(error => {throw error;});
+}
+
+function updateChar(req, res) {
+  console.log(req);
 }
 
 // Export our server

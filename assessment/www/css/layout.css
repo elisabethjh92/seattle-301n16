@@ -1,0 +1,27 @@
+body > header {
+    background: black;
+    box-shadow: 0px 15px 10px -15px black;
+    color: goldenrod;
+    line-height: 3em;
+    text-align: center;
+    background-attachment: fixed;
+    width: 100%;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+footer {
+    position: fixed;
+    background: black;
+    height: 4em;
+    line-height: 4em;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    margin-bottom: 0px;
+    text-align: center;
+}
+
+footer > strong {
+    color: goldenrod;
+}

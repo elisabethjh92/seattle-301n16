@@ -1,15 +1,41 @@
 'use strict';
 
-let likeButtons = document.getElementsByTagName('button');
-
-for (let i = 0; i < likeButtons.length; i++) {
-  likeButtons[i].addEventListener('click', likeMe);
-}
-
+$('.up').on('click', likeMe);
 function likeMe(e) {
-  let character = e.target.parentNode;
-  let counter = character.getElementsByTagName('span')[0];
-  let count = parseInt(counter.textContent);
+  e.preventDefault();
+  let counter = $(this).parent().find('span')[0];
+  let count = parseInt($(counter).text());
   count++;
-  counter.textContent = count;
+  $(counter).text(count);
 }
+
+$('.get-more').click((e) => {
+  e.preventDefault();
+  console.log('proof');
+  $.ajax('/characters', {method: 'GET', datatype: 'JSON'})
+    .then(data => {
+      data.forEach(value => {
+        let starChar = new StarWars(value);
+        let starCont = starChar.render();
+        $('#buttons').on('click', likeMe);
+        $('.characters').append(starCont);
+      });
+      $('.up').on('click', likeMe);
+    }).catch(error => { throw error; });
+});
+
+function StarWars(obj) {
+  this.name = obj.name,
+  this.likes = obj.likes,
+};
+
+StarWars.prototype.render = function() {
+  const source = $('#star-wars').html();
+  let template = Handlebars.compile(source);
+  return template(this);
+}
+
+
+
+
+

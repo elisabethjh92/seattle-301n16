@@ -1,0 +1,75 @@
+h1 {
+    font-family: 'Poller One'; font-size: 3em;
+    color: gold;
+    margin-top: 1em;
+}
+
+main {
+    overflow: auto;
+    margin: 2em 0;
+    padding: 0 2em;
+}
+
+.characters {
+    width: auto;
+    display: inline-flex;
+    flex-wrap: wrap;
+}
+
+.character {
+    background: black;
+    color: gold;
+    box-shadow: 0 10px 6px -6px goldenrod;
+    margin: .5em;
+    width: 250px;
+}
+
+.character header {
+    background: goldenrod;
+    color: black;
+    line-height: 1.5em;
+    text-align: center;
+}
+
+.character span {
+    display: block;
+    font-size: 1.5em;
+    font-weight: bold;
+    line-height: 2.5em;
+    text-align: center;
+}
+
+.character button {
+    display: block;
+    margin: .5em auto;
+    width: 50%;
+    color: black;
+    background-color: gold;
+    border: none;
+    border-radius: 12px;
+}
+
+.character button:hover {
+    background-color: red;
+    color: black;
+}
+
+h2 {
+    background-color: black;
+    color: goldenrod;
+}
+
+.get-more {
+    border: none;
+    display: block;
+    justify-content: center;
+    border-radius: 12px;
+    font-size: 1.5em;
+    color: black;
+    background-color: goldenrod;
+    width: 20%;
+    margin-top: 100px;
+    margin-bottom: 50px;
+    margin-left: 40%;
+    margin-right: 40%
+}
